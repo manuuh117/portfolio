@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmanuel Developer | Modern Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+     
+   <!-- Loading Screen -->
+<div id="loading" class="loading">
+    <div class="spinner"></div>
+  </div>
+  
+      
+    
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle notification-icon"></i>
+        <div class="notification-content"></div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <div class="mobile-logo">
+            
+            <h1>emmanuel</h1>
+        </div>
+        <button class="mobile-theme-toggle" id="mobileThemeToggle">
+            <i class="fas fa-moon" id="mobileThemeIcon"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <div class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Floating Theme Toggle -->
+    <button class="floating-theme-toggle" id="floatingThemeToggle">
+        <i class="fas fa-moon" id="floatingThemeIcon"></i>
+    </button>
+
+    <!-- Swipe Indicator -->
+    <div class="swipe-indicator">
+        <div class="swipe-dot active" data-section="0"></div>
+        <div class="swipe-dot" data-section="1"></div>
+        <div class="swipe-dot" data-section="2"></div>
+        <div class="swipe-dot" data-section="3"></div>
+        <div class="swipe-dot" data-section="4"></div>
+        <div class="swipe-dot" data-section="5"></div>
+        <div class="swipe-dot" data-section="6"></div>
+    </div>
+
+    <div class="container">
+        <!-- Sidebar Overlay -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        
+        <!-- Enhanced Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <button class="close-sidebar" id="closeSidebar">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="logo">
+                <div class="logo-icon">
+                    
+                </div>
+                <h1>Emmanuel</h1>
+            </div>
+
+            <nav class="nav-menu" role="navigation">
+                <div class="nav-item">
+                    <a href="#" class="nav-link active" data-section="0" aria-label="Home">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" data-section="1" aria-label="About">
+                        <i class="fas fa-user"></i>
+                        <span>About</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" data-section="2" aria-label="Experience">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Experience</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" data-section="3" aria-label="Education">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Education</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" data-section="4" aria-label="Projects">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Projects</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" data-section="5" aria-label="Skills">
+                        <i class="fas fa-tools"></i>
+                        <span>Skills</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" data-section="6" aria-label="Contact">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact</span>
+                    </a>
+                </div>
+                
+            </nav>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content" role="main" id="mainContent">
+            <div class="content-slider" id="contentSlider">
+                <!-- Dashboard Slide -->
+                <section class="slide active">
+                    <div class="hero">
+                        <img src="/images/img.jpg" alt="Nuel Developer" class="profile-image">
+                        <h1>Emmanuel Mugendi</h1>
+                        <p>Passionate Full Stack Developer crafting beautiful digital experiences 
+                            with modern technologies, and security in mind
+                        </p>
+                        <div class="social-links">
+                            <a href="https://github.com/manuuh117" class="social-link" aria-label="GitHub" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/emmanuel-mugendi" class="social-link" aria-label="LinkedIn" target="_blank">
+
+                             <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://twitter.com/Uh4Manu20308" class="social-link" aria-label="Twitter" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://wa.me/+254745978752" class="social-link" aria-label="Twitter" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="stat-value">5+</div>
+                            <div class="stat-label">Projects Completed</div>
+                            <p>more to come</p>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-value">2</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- About Slide -->
+                <section class="slide">
+                    <div class="glass-card">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h2 class="section-title">About Me</h2>
+                        </div>
+                        <p>I'm a passionate full-stack developer with a strong background in both front-end and back-end technologies.</p>
+                        <p> I've worked with startups to deliver high-quality web applications. I believe in writing clean, maintainable code and following best practices.</p>
+                        <p>When I'm not coding, I enjoy contributing to open-source projects, attending tech meetupswatching tech documentaries.</p>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h2 class="section-title">Interests & Hobbies</h2>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-laptop-code"></i>
+                                </div>
+                                <div class="stat-label">Technical Interests</div>
+                                <p>Progressive Web Apps,Artificial intelligence, Serverless Architecture, Machine Learning, Blockchain, UI/UX Design ,Cyber security</p>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                                <div class="stat-label">Personal Interests</div>
+                                <p> Open Source, Mentoring ,writting</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Experience Slide -->
+                <section class="slide">
+                    <div class="glass-card">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <h2 class="section-title">Field Experience</h2>
+                        </div>
+                        
+                       
+                        
+                        <div class="experience-item" style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border);">
+                            <div style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">2024 - 2025</div>
+                            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Frontend Developer</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">Developed responsive web applications using React and Redux. Created reusable component libraries that accelerated development across multiple projects. Implemented performance optimizations that improved page load times by 60%.</p>
+                            <p style="color: var(--text-secondary); line-height: 1.7;">Worked closely with UX designers to implement pixel-perfect interfaces. Integrated RESTful APIs and implemented state management solutions.</p>
+                        </div>
+                        
+                        <div class="experience-item">
+                            <div style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">2023-</div>
+                            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Web Developer Intern</h3>
+                            <div style="color: var(--accent); margin-bottom: 1rem; font-weight: 500;">StartUp Ventures, zetech</div>
+                            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">Assisted in developing and maintaining company websites using HTML, CSS, and JavaScript. Implemented new features and fixed bugs in existing codebase.</p>
+                            
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education Slide -->
+                <section class="slide">
+                    <div class="glass-card">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h2 class="section-title">Education & Certifications</h2>
+                        </div>
+                        
+                        <div class="experience-item" style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border);">
+                            <div style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">2024 - 2026</div>
+                            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">B.S. in software engineering</h3>
+                            <div style="color: var(--accent); margin-bottom: 1rem; font-weight: 500;">zetech university</div>
+                            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;"> Specializing in Web Technologies and Human-Computer Interaction. Relevant coursework included Algorithms, Data Structures, Web Development, Database Systems, and Software Engineering.</p>
+                            
+                        </div>
+                        
+                        <div class="experience-item" style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border);">
+                            <div style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">2025</div>
+                            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Ai  Developer</h3>
+                            <div style="color: var(--accent); margin-bottom: 1rem; font-weight: 500;">havard CS50</div>
+                            <p style="color: var(--text-secondary); line-height: 1.7;">Certification in developing and maintaining Ai,still working on it.</p>
+                        </div>
+                        
+                        <div class="experience-item">
+                            <div style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">2025</div>
+                            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Cyber security Certificate</h3>
+                            <div style="color: var(--accent); margin-bottom: 1rem; font-weight: 500;">cisco</div>
+                            <p style="color: var(--text-secondary); line-height: 1.7;">been learning about penetration testing so as to evelop softwares free from such attacks.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects Slide -->
+                <section class="slide">
+                    <div class="glass-card">
+                      <div class="section-header">
+                        <div class="section-icon">
+                          <i class="fas fa-code-branch"></i>
+                        </div>
+                        <h2 class="section-title">Featured Projects</h2>
+                      </div>
+                  
+                      <div class="projects-grid">
+                        
+                        <!-- E-commerce Project (Coming Soon) -->
+                        <div class="project-card coming-soon">
+                          <div class="project-header">
+                            <img src="images/ecommerce-placeholder.png" alt="E-Commerce Platform" class="project-image">
+                            <h3 class="project-title">E-Commerce Platform</h3>
+                            <p class="project-description">🚧 Coming Soon – A full-featured online store with payment processing, inventory management, and admin dashboard.</p>
+                            <div class="tech-stack">
+                              <span class="tech-tag">React</span>
+                              <span class="tech-tag">Node.js</span>
+                              <span class="tech-tag">MongoDB</span>
+                              <span class="tech-tag">Daraja API</span>
+                            </div>
+                          </div>
+                        </div>
+                  
+                        <!-- Recipe Finder Project -->
+                        <div class="project-card">
+                          <div class="project-header">
+                            <img src="images/recipe_finder.png" alt="Recipe Finder Website" class="project-image">
+                            <h3 class="project-title">Recipe Finder</h3>
+                            <p class="project-description">A recipe sharing platform where users can search recipes by ingredients and explore new meals.</p>
+                            <div class="tech-stack">
+                              <span class="tech-tag">PHP</span>
+                              <span class="tech-tag">MySQL</span>
+                              <span class="tech-tag">HTML</span>
+                              <span class="tech-tag">CSS</span>
+                            </div>
+                            <a href="https://manuuh117.github.io/Recipe-finder" class="project-demo" target="_blank" aria-label="Live Demo">
+                              <i class="fas fa-external-link-alt"></i>
+                              Live Demo
+                            </a>
+                            <a href="https://github.com/manuuh117/Recipe-finder" class="project-github" target="_blank" aria-label="View on GitHub">
+                              <i class="fab fa-github"></i>
+                              GitHub Repo
+                            </a>
+                          </div>
+                        </div>
+                  
+                      </div>
+                    </div>
+                  </section>
+                  
+
+                <!-- Skills Slide -->
+                <section class="slide">
+                    <div class="glass-card">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h2 class="section-title">Technical Skills</h2>
+                        </div>
+                        <div class="skills-grid">
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fab fa-html5"></i>
+                                </div>
+                                <h3 class="skill-name">HTML/CSS</h3>
+                                <p>I have extensive experience in building and designing responsive websites</p>
+                               
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fab fa-js"></i>
+                                </div>
+                                <h3 class="skill-name">JavaScript</h3>
+                                <p>Expert in modern JavaScript and ES6+ features</p>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fab fa-react"></i>
+                                </div>
+                                <h3 class="skill-name">React</h3>
+                                <p>Building complex applications with React and Redux</p>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fab fa-c++"></i>
+                                </div>
+                                <h3 class="skill-name">C++</h3>
+                                <p>Building complex game environments and engines</p>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fab fa-Java"></i>
+                                </div>
+                                <h3 class="skill-name">Java</h3>
+                                <p>building backend applications</p>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fab fa-node-js"></i>
+                                </div>
+                                <h3 class="skill-name">Node.js</h3>
+                                <p>Developing RESTful APIs and server-side applications</p>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fab fa-python"></i>
+                                </div>
+                                <h3 class="skill-name">Python</h3>
+                                <p>Scripting, data analysis, and backend development</p>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <h3 class="skill-name">SQL</h3>
+                                <p>Database design, optimization, and complex queries</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h2 class="section-title">Soft Skills</h2>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-label">Leadership & Communication</div>
+                                <p style="color: var(--text-secondary);">Team Leadership, Communication, Mentoring, Presentation Skills</p>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div class="stat-label">Problem Solving</div>
+                                <p style="color: var(--text-secondary);">Critical Thinking, Adaptability, Time Management, Project Management</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                
+                <!-- Contact Slide -->
+<section id="contact" class="slide">
+    <div class="glass-card">
+      <!-- Section Header -->
+      <div class="section-header">
+        <div class="section-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <h2 class="section-title">Get In Touch</h2>
+      </div>
+  
+      <!-- Contact Info Cards -->
+      <div class="stats-grid" style="margin-bottom: 3rem;">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="stat-label">Email</div>
+          <p style="color: var(--text-secondary);">emmanuelmugendi613@gmail.com</p>
+        </div>
+  
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="stat-label">Phone</div>
+          <p style="color: var(--text-secondary);">+254745978752</p>
+        </div>
+  
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="stat-label">Location</div>
+          <p style="color: var(--text-secondary);">Nairobi</p>
+        </div>
+  
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fab fa-linkedin"></i>
+          </div>
+          <div class="stat-label">LinkedIn</div>
+          <p style="color: var(--text-secondary);">
+            <a href="https://linkedin.com/in/emmanuel-mugendi" class="social-link" aria-label="LinkedIn" target="_blank"> </a>
+          </p>
+        </div>
+      </div>
+  
+      <!-- Contact Form (Formspree) -->
+      <form id="contactForm" class="contact-form" action="https://formspree.io/f/mnngnylo" method="POST">
+        <div class="form-group">
+          <label for="name" class="form-label">Your Name</label>
+          <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="email" class="form-label">Your Email</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="message" class="form-label">Your Message</label>
+          <textarea id="message" name="message" class="form-input form-textarea" placeholder="Type your message" required></textarea>
+        </div>
+  
+        <button type="submit" class="submit-btn">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+      </form>
+  
+      <!-- WhatsApp Quick Contact -->
+        <a href="https://wa.me/254745978752" 
+          target="_blank" 
+           class="submit-btn whatsapp-btn">
+           <i class="fab fa-whatsapp"></i> Message Me on WhatsApp
+        </a>
+
+    </div>
+  </section>
+  
+            </div>
+        </main>
+    </div>
+
+   <script src="portfolio.js"></script>
+</body>
+</html>
