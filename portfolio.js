@@ -782,22 +782,64 @@ function downloadCV() {
         .replace(/Full-Stack Software Engineer \| SaaS & FinTech Systems/g, '<h3 style="margin:5px 0 0 0; color:#555; font-weight:normal;">Full-Stack Software Engineer | SaaS & FinTech Systems</h3>')
         .replace(/\n/g, '<br>');
         
-    // Wrap in a clean styling container
-    let finalHtml = `
-        <div style="padding: 40px; font-family: Helvetica, Arial, sans-serif; color: #222; line-height: 1.6; font-size: 14px; background: #FFFFFF; width: 800px;">
+    // Create an isolated iframe to prevent the website's CSS and scroll position from ruining the PDF
+    const iframe = document.createElement('iframe');
+    iframe.style.position = 'fixed';
+    iframe.style.top = '0';
+    iframe.style.left = '0';
+    iframe.style.width = '800px';
+    iframe.style.height = '1200px';
+    iframe.style.zIndex = '-9999';
+    iframe.style.pointerEvents = 'none';
+    iframe.style.opacity = '0';
+    document.body.appendChild(iframe);
+    
+    // Write the CV HTML directly into the iframe's isolated document
+    const iframeDoc = iframe.contentWindow.document;
+    iframeDoc.open();
+    iframeDoc.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <style>
+                body {
+                    margin: 0;
+                    padding: 40px;
+                    font-family: Helvetica, Arial, sans-serif;
+                    color: #222;
+                    line-height: 1.6;
+                    font-size: 14px;
+                    background: #FFFFFF;
+                }
+                h1, h2, h3 { color: #000; }
+                h1 { margin: 0; font-size: 28px; }
+                h2 { margin-top: 25px; margin-bottom: 10px; font-size: 18px; text-transform: uppercase; }
+                h3 { margin: 5px 0 0 0; color: #555; font-weight: normal; }
+                hr { margin: 15px 0; border: 1px solid #333; }
+            </style>
+        </head>
+        <body>
             ${htmlContent}
-        </div>
-    `;
+        </body>
+        </html>
+    `);
+    iframeDoc.close();
     
     const opt = {
       margin:       0.5,
       filename:     'Nuel_Software_Engineer_CV.pdf',
       image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2, useCORS: true },
+      html2canvas:  { scale: 2, windowWidth: 800, windowHeight: 1200 },
       jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
 
-    html2pdf().set(opt).from(finalHtml).save().catch(err => {
-        console.error("PDF Generation Error:", err);
-    });
+    // Give the iframe 100ms to parse the HTML before capturing
+    setTimeout(() => {
+        html2pdf().set(opt).from(iframeDoc.body).save().then(() => {
+            document.body.removeChild(iframe);
+        }).catch(err => {
+            console.error("PDF Generation Error:", err);
+            document.body.removeChild(iframe);
+        });
+    }, 100);
 }
