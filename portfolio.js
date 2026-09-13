@@ -637,4 +637,122 @@ if (typeof Swiper !== 'undefined') {
     });
 }
 
+// ==========================================
+// 11. Terminal CV Generator
+// ==========================================
+const cvData = `
+=========================================================
+NUEL (EMMANUEL)
+Full-Stack Software Engineer | SaaS & FinTech Systems
+=========================================================
 
+> SUMMARY
+Product-minded software engineer with experience translating business requirements into scalable web and SaaS systems. Experienced in building real-time web applications, API integrations, and business automation systems.
+
+> TECHNICAL SKILLS
+- Languages: JavaScript, PHP, HTML5, CSS3
+- Frontend: React, Next.js, Bootstrap, Tailwind CSS, Responsive Web Design, PWA
+- Backend: Node.js, PHP, REST APIs, WebSockets
+- Authentication: OAuth 2.0, PKCE, session/token management
+- Databases: PostgreSQL, Supabase, Redis, local databases
+- Payments: M-Pesa Daraja API, STK Push
+- DevOps: Docker, Docker Compose, Git, GitHub Actions, VPS deployment, Linux
+- Integrations: Deriv API, Maps APIs, WhatsApp integrations, third-party REST/WebSocket APIs
+- Engineering: Real-time systems, async programming, state management, error handling, retries, idempotency, reconciliation, debugging
+- Architecture: SaaS, multi-tenancy, API-driven systems, client-server architecture
+
+> KEY PROJECTS
+1. Real-Time Trading Platform (Lead Software Engineer)
+Tech: JavaScript, PHP/Node.js, WebSockets, Deriv API, OAuth PKCE, Supabase
+Designed and developed a web-based trading platform integrating the Deriv API for real-time market data, account management, contract execution and automated trading workflows. Diagnosed and improved reliability issues involving stale connections, duplicate contracts, and state reconciliation.
+
+2. Multi-Tenant Trading SaaS
+Tech: React/JavaScript, Node.js, Supabase, Docker, REST APIs
+Designed application architecture supporting multiple business tenants from a shared codebase, including tenant-specific branding, domains, API configuration, user management, and subscriptions.
+
+3. Property Rental Marketplace (Full-Stack Developer)
+Tech: React, Tailwind, Maps API, WhatsApp integration
+Developed a marketplace architecture connecting property owners and prospective tenants, including role-based user flows, property listings, saved properties, location/map integration and WhatsApp-based sharing.
+
+4. Tourism & B&B Booking Platform
+Tech: Next.js/React, M-Pesa, CMS/admin system
+Developed booking architecture including M-Pesa payments, image management, dynamic pricing, and mobile-first design.
+
+5. MarsTech (Founder / Software Engineer)
+Develop and deliver custom software solutions for businesses, covering requirements analysis, system architecture, web development, API integrations, deployment and ongoing technical support.
+
+> EDUCATION
+Zetech University
+Bachelor's degree — Software Engineering
+Relevant coursework: Network Engineering, Programming, IT Project Management, User-Centred Design.
+`;
+
+const btnGenerateCv = document.getElementById('btn-generate-cv');
+const cvOverlay = document.getElementById('cv-terminal-overlay');
+const cvOutput = document.getElementById('cv-terminal-output');
+const cvClose = document.getElementById('cv-close-btn');
+let typeInterval = null;
+
+if (btnGenerateCv) {
+    btnGenerateCv.addEventListener('click', () => {
+        cvOverlay.style.display = 'flex';
+        cvOutput.textContent = '';
+        if(soundEnabled) playHoverSound();
+        if(typeInterval) clearInterval(typeInterval);
+        
+        let index = 0;
+        const typeSpeed = 5; // Fast typing
+        typeInterval = setInterval(() => {
+            cvOutput.textContent += cvData.charAt(index);
+            index++;
+            cvOverlay.scrollTop = cvOverlay.scrollHeight; // Auto-scroll
+            
+            if (index % 15 === 0 && soundEnabled) playUiTick(); // Typing sound
+            
+            if (index >= cvData.length) {
+                clearInterval(typeInterval);
+                cvOutput.textContent += '\\n\\n> DOWNLOAD_INITIATED...\\n> [OK]';
+                downloadCV();
+            }
+        }, typeSpeed);
+    });
+}
+
+if (cvClose) {
+    cvClose.addEventListener('click', () => {
+        cvOverlay.style.display = 'none';
+        cvOutput.textContent = '';
+        if(typeInterval) clearInterval(typeInterval);
+    });
+}
+
+function downloadCV() {
+    // Create a clean, professional HTML container for the PDF
+    const pdfContainer = document.createElement('div');
+    pdfContainer.style.padding = '40px';
+    pdfContainer.style.fontFamily = 'Helvetica, Arial, sans-serif';
+    pdfContainer.style.color = '#222';
+    pdfContainer.style.lineHeight = '1.6';
+    pdfContainer.style.fontSize = '14px';
+    pdfContainer.style.background = '#FFFFFF';
+    
+    // Format the raw terminal text into structured HTML for the PDF
+    let htmlContent = cvData
+        .replace(/=========================================================/g, '<hr style="margin: 15px 0; border: 1px solid #333;">')
+        .replace(/> (SUMMARY|TECHNICAL SKILLS|KEY PROJECTS|EDUCATION)/g, match => `<h2 style="color: #000; margin-top: 25px; margin-bottom: 10px; font-size: 18px; text-transform: uppercase;">${match.substring(2)}</h2>`)
+        .replace(/NUEL \(EMMANUEL\)/g, '<h1 style="margin:0; font-size: 28px; color:#000;">NUEL (EMMANUEL)</h1>')
+        .replace(/Full-Stack Software Engineer \| SaaS & FinTech Systems/g, '<h3 style="margin:5px 0 0 0; color:#555; font-weight:normal;">Full-Stack Software Engineer | SaaS & FinTech Systems</h3>')
+        .replace(/\n/g, '<br>');
+        
+    pdfContainer.innerHTML = htmlContent;
+    
+    const opt = {
+      margin:       0.5,
+      filename:     'Nuel_Software_Engineer_CV.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(pdfContainer).save();
+}

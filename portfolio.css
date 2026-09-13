@@ -1091,6 +1091,8 @@ footer {
 
 /* Mobile responsive Bento & Typography */
 @media (max-width: 768px) {
+    .navbar { padding: 1rem 1.5rem; }
+    .nav-actions { gap: 0.5rem; }
     .nav-links { display: none; }
     .mobile-menu-btn { display: block; }
     .hero-title { font-size: 5rem; letter-spacing: -2px; }

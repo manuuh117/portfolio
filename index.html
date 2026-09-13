@@ -119,6 +119,8 @@
                                 <div class="gazette-text">
                                     <p><span class="drop-cap">A</span>t the bleeding edge of the financial technology sector, secure data streams and high-frequency algorithms dictate the market. Nuel, a highly driven software engineer, has positioned himself precisely at this intersection. Specializing in building fast, impenetrable, and massively scalable applications, his work bridges the critical gap between complex raw data processing and pixel-perfect user interfaces.</p>
                                     <p>Currently engineering the future at <strong>myelitetrader.com</strong>, Nuel architects robust trading software that handles real-time market data visualization and secure execution environments. His technological stack leans heavily into performant JavaScript ecosystems, Python data pipelines, and highly secure SQL architectures.</p>
+                                    <br>
+                                    <button id="btn-generate-cv" class="btn btn-primary magnetic-btn hover-sound">> GENERATE_CV.exe</button>
                                 </div>
                             </div>
 
@@ -413,12 +415,22 @@
 
     <!-- Audio Effects -->
     <audio id="hover-sound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
+    <!-- CV Terminal Overlay -->
+    <div id="cv-terminal-overlay" class="hidden" style="position: fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.95); z-index:10001; display:none; flex-direction:column; padding:2rem; font-family:var(--font-code); color:var(--accent-green); overflow-y:auto;">
+        <div class="cv-terminal-header" style="display:flex; justify-content:space-between; border-bottom:1px solid var(--accent-green); padding-bottom:1rem; margin-bottom:1rem;">
+            <span>> ROOT_ACCESS_GRANTED</span>
+            <span id="cv-close-btn" style="cursor:pointer; color:var(--text-muted); padding:0 1rem;">[X] CLOSE</span>
+        </div>
+        <div id="cv-terminal-output" style="white-space: pre-wrap; font-size:0.9rem; line-height:1.5;"></div>
+        <div id="cv-terminal-cursor" style="display:inline-block; width:10px; height:15px; background:var(--accent-green); animation:blink 1s infinite;"></div>
+    </div>
+
     <!-- JS Engines -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="portfolio.js"></script>
 </body>
 </html>
