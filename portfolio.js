@@ -285,29 +285,6 @@ setTimeout(typeEffect, 3000);
 // ==========================================
 // 6. Mobile Menu & Navbar Links
 // ==========================================
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const mobileCloseBtn = document.querySelector('.mobile-close-btn');
-const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
-const mobileLinks = document.querySelectorAll('.mobile-link');
-
-if(mobileMenuBtn) {
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileMenuOverlay.classList.toggle('active');
-    });
-}
-
-if(mobileCloseBtn) {
-    mobileCloseBtn.addEventListener('click', () => {
-        mobileMenuOverlay.classList.remove('active');
-    });
-}
-
-mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenuOverlay.classList.remove('active');
-    });
-});
-
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.nav-links a');
 
@@ -637,16 +614,16 @@ themeOptions.forEach(option => {
 
 // Mobile Hamburger Menu
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const navLinks = document.querySelector('.nav-links');
+const navMenuContainer = document.querySelector('.nav-links');
 
-if (mobileMenuBtn && navLinks) {
+if (mobileMenuBtn && navMenuContainer) {
     mobileMenuBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('mobile-active');
+        navMenuContainer.classList.toggle('mobile-active');
         if(soundEnabled) playUiTick();
         
         const icon = mobileMenuBtn.querySelector('i');
         if(icon) {
-            if (navLinks.classList.contains('mobile-active')) {
+            if (navMenuContainer.classList.contains('mobile-active')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
             } else {
@@ -657,10 +634,10 @@ if (mobileMenuBtn && navLinks) {
     });
     
     // Close mobile menu when a link is clicked
-    const links = navLinks.querySelectorAll('a');
+    const links = navMenuContainer.querySelectorAll('a');
     links.forEach(link => {
         link.addEventListener('click', () => {
-            navLinks.classList.remove('mobile-active');
+            navMenuContainer.classList.remove('mobile-active');
             const icon = mobileMenuBtn.querySelector('i');
             if(icon) {
                 icon.classList.remove('fa-times');
