@@ -827,21 +827,14 @@ function downloadCV() {
     `);
     iframeDoc.close();
     
-    const opt = {
-      margin:       0.5,
-      filename:     'Nuel_Software_Engineer_CV.pdf',
-      image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
-      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-    };
-
-    // Give the iframe 100ms to parse the HTML before capturing
+    // Give the iframe 100ms to parse the HTML before printing
     setTimeout(() => {
-        html2pdf().set(opt).from(iframeDoc.body).save().then(() => {
+        iframe.contentWindow.focus();
+        iframe.contentWindow.print();
+        
+        // Remove the iframe after printing is initiated
+        setTimeout(() => {
             document.body.removeChild(iframe);
-        }).catch(err => {
-            console.error("PDF Generation Error:", err);
-            document.body.removeChild(iframe);
-        });
+        }, 1000);
     }, 100);
 }
