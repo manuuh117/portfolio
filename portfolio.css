@@ -1094,6 +1094,23 @@ footer {
     .navbar { padding: 1rem 1.5rem; }
     .nav-actions { gap: 0.5rem; }
     .nav-links { display: none; }
+    
+    .nav-links.mobile-active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bg-panel);
+        backdrop-filter: blur(15px);
+        padding: 2rem;
+        border-bottom: 1px solid var(--border-color);
+        gap: 1.5rem;
+        align-items: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
     .mobile-menu-btn { display: block; }
     .hero-title { font-size: 5rem; letter-spacing: -2px; }
     .hero-subtitle { font-size: 1.5rem; }

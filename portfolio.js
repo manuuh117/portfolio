@@ -595,9 +595,28 @@ keys.forEach(key => {
 });
 
 // ==========================================
-// 9. Theme Switcher Engine
+// 9. Theme Switcher Engine & Mobile Menu
 // ==========================================
 const themeOptions = document.querySelectorAll('.theme-option');
+const themeBtn = document.getElementById('theme-btn');
+const themeDropdown = document.getElementById('theme-dropdown');
+
+// Mobile click support for theme dropdown
+if (themeBtn && themeDropdown) {
+    themeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        themeDropdown.style.display = themeDropdown.style.display === 'flex' ? 'none' : 'flex';
+        if(soundEnabled) playUiTick();
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', () => {
+        if(window.innerWidth <= 768 && themeDropdown) {
+            themeDropdown.style.display = '';
+        }
+    });
+}
+
 themeOptions.forEach(option => {
     option.addEventListener('click', (e) => {
         const selectedTheme = e.target.getAttribute('data-theme');
@@ -606,10 +625,50 @@ themeOptions.forEach(option => {
         // Save preference
         localStorage.setItem('portfolio-theme', selectedTheme);
         
+        // Close dropdown on mobile
+        if(window.innerWidth <= 768 && themeDropdown) {
+            themeDropdown.style.display = 'none';
+        }
+        
         // UI Feedback
         if(soundEnabled) playUiTick();
     });
 });
+
+// Mobile Hamburger Menu
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navLinks = document.querySelector('.nav-links');
+
+if (mobileMenuBtn && navLinks) {
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('mobile-active');
+        if(soundEnabled) playUiTick();
+        
+        const icon = mobileMenuBtn.querySelector('i');
+        if(icon) {
+            if (navLinks.classList.contains('mobile-active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+    });
+    
+    // Close mobile menu when a link is clicked
+    const links = navLinks.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('mobile-active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if(icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
+}
 
 // Load saved theme on boot
 const savedTheme = localStorage.getItem('portfolio-theme');
@@ -746,8 +805,12 @@ function downloadCV() {
     pdfContainer.style.lineHeight = '1.6';
     pdfContainer.style.fontSize = '14px';
     pdfContainer.style.background = '#FFFFFF';
-    pdfContainer.style.position = 'absolute';
-    pdfContainer.style.left = '-9999px'; // Hide it from view
+    pdfContainer.style.position = 'fixed'; // Must be fixed, not absolute
+    pdfContainer.style.top = '0';
+    pdfContainer.style.left = '0';
+    pdfContainer.style.width = '800px'; // Explicit width for rendering
+    pdfContainer.style.zIndex = '-9999'; // Hide behind UI instead of offscreen
+    pdfContainer.style.pointerEvents = 'none';
     
     // Format the raw terminal text into structured HTML for the PDF
     let htmlContent = cvData
