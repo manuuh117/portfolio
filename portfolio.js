@@ -774,21 +774,6 @@ if (cvClose) {
 }
 
 function downloadCV() {
-    // Create a clean, professional HTML container for the PDF
-    const pdfContainer = document.createElement('div');
-    pdfContainer.style.padding = '40px';
-    pdfContainer.style.fontFamily = 'Helvetica, Arial, sans-serif';
-    pdfContainer.style.color = '#222';
-    pdfContainer.style.lineHeight = '1.6';
-    pdfContainer.style.fontSize = '14px';
-    pdfContainer.style.background = '#FFFFFF';
-    pdfContainer.style.position = 'fixed'; // Must be fixed, not absolute
-    pdfContainer.style.top = '0';
-    pdfContainer.style.left = '0';
-    pdfContainer.style.width = '800px'; // Explicit width for rendering
-    pdfContainer.style.zIndex = '-9999'; // Hide behind UI instead of offscreen
-    pdfContainer.style.pointerEvents = 'none';
-    
     // Format the raw terminal text into structured HTML for the PDF
     let htmlContent = cvData
         .replace(/=========================================================/g, '<hr style="margin: 15px 0; border: 1px solid #333;">')
@@ -797,21 +782,22 @@ function downloadCV() {
         .replace(/Full-Stack Software Engineer \| SaaS & FinTech Systems/g, '<h3 style="margin:5px 0 0 0; color:#555; font-weight:normal;">Full-Stack Software Engineer | SaaS & FinTech Systems</h3>')
         .replace(/\n/g, '<br>');
         
-    pdfContainer.innerHTML = htmlContent;
-    document.body.appendChild(pdfContainer); // Must be in DOM for html2pdf to compute styles
+    // Wrap in a clean styling container
+    let finalHtml = `
+        <div style="padding: 40px; font-family: Helvetica, Arial, sans-serif; color: #222; line-height: 1.6; font-size: 14px; background: #FFFFFF; width: 800px;">
+            ${htmlContent}
+        </div>
+    `;
     
     const opt = {
       margin:       0.5,
       filename:     'Nuel_Software_Engineer_CV.pdf',
       image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2 },
+      html2canvas:  { scale: 2, useCORS: true },
       jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
 
-    html2pdf().set(opt).from(pdfContainer).save().then(() => {
-        document.body.removeChild(pdfContainer); // Cleanup after download
-    }).catch(err => {
+    html2pdf().set(opt).from(finalHtml).save().catch(err => {
         console.error("PDF Generation Error:", err);
-        document.body.removeChild(pdfContainer);
     });
 }
