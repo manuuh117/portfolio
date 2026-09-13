@@ -487,7 +487,7 @@ function triggerMainframeHack() {
     glitchOverlay.classList.add('active');
     gameStatus.textContent = "> SYSTEM_FAILURE...";
     gameStatus.style.color = "var(--term-red)";
-    if(soundEnabled) playHoverSound(); // harsh sound
+    if(soundEnabled) playUiTick(); // harsh sound
     
     setTimeout(() => {
         // 2. Override Theme to Cyber Hacker
