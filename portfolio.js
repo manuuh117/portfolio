@@ -156,11 +156,11 @@ function initGSAPAnimations() {
     // 4.3 Side Fades
     gsap.fromTo('.gsap-fade-right', 
         { x: -50, autoAlpha: 0 },
-        { x: 0, autoAlpha: 1, duration: 1, ease: "power3.out", scrollTrigger: { trigger: '.about-grid', start: "top 80%" }}
+        { x: 0, autoAlpha: 1, duration: 1, ease: "power3.out", scrollTrigger: { trigger: '.gazette-layout', start: "top 80%" }}
     );
     gsap.fromTo('.gsap-fade-left', 
         { x: 50, autoAlpha: 0 },
-        { x: 0, autoAlpha: 1, duration: 1, ease: "power3.out", scrollTrigger: { trigger: '.about-grid', start: "top 80%" }}
+        { x: 0, autoAlpha: 1, duration: 1, ease: "power3.out", scrollTrigger: { trigger: '.gazette-layout', start: "top 80%" }}
     );
 
     // 4.4 Staggered Lists (Timeline)
@@ -607,7 +607,7 @@ themeOptions.forEach(option => {
         localStorage.setItem('portfolio-theme', selectedTheme);
         
         // UI Feedback
-        if(soundEnabled) playHoverSound();
+        if(soundEnabled) playUiTick();
     });
 });
 
@@ -693,7 +693,7 @@ if (btnGenerateCv) {
     btnGenerateCv.addEventListener('click', () => {
         cvOverlay.style.display = 'flex';
         cvOutput.textContent = '';
-        if(soundEnabled) playHoverSound();
+        if(soundEnabled) playUiTick();
         if(typeInterval) clearInterval(typeInterval);
         
         let index = 0;
