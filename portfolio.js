@@ -327,15 +327,27 @@ window.addEventListener('resize', () => {
 });
 
 const letters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+const customRainWords = [
+    "NUEL", 
+    "MANUUH", 
+    "YOU ARE AN ARTIST MY FRIEND", 
+    "FINTECH", 
+    "SOFTWARE", 
+    "ENGINEER",
+    "ELITE TRADER"
+];
 const fontSize = 14;
-let columns = cw / fontSize;
+let columns = Math.floor(cw / fontSize);
 let drops = [];
+let dropWords = []; // State array to remember if a column is dropping a word
 
 function initDrops() {
-    columns = cw / fontSize;
+    columns = Math.floor(cw / fontSize);
     drops = [];
+    dropWords = [];
     for(let x = 0; x < columns; x++) {
-        drops[x] = Math.random() * ch;
+        drops[x] = Math.random() * (ch / fontSize); // Distribute vertically
+        dropWords[x] = null;
     }
 }
 initDrops();
@@ -345,16 +357,37 @@ function drawRain() {
     ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
     ctx.fillRect(0, 0, cw, ch);
     
-    // Pure White color for monochromatic theme
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.25)';
     ctx.font = fontSize + 'px "JetBrains Mono", monospace';
     
     for(let i = 0; i < drops.length; i++) {
-        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        let text;
+        
+        if (dropWords[i]) {
+            // Drop a specific word vertically
+            const word = dropWords[i];
+            const charIndex = Math.floor(drops[i]) % word.length;
+            text = word.charAt(charIndex);
+            
+            // Highlight custom words to make them visually pop
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+        } else {
+            // Normal random matrix character
+            text = letters.charAt(Math.floor(Math.random() * letters.length));
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.25)'; // standard opacity
+        }
+        
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
         
+        // Reset drop to top of screen with randomness
         if(drops[i] * fontSize > ch && Math.random() > 0.975) {
             drops[i] = 0;
+            
+            // 6% chance to drop a custom word in this column on next cycle
+            if (Math.random() > 0.94) {
+                dropWords[i] = customRainWords[Math.floor(Math.random() * customRainWords.length)];
+            } else {
+                dropWords[i] = null;
+            }
         }
         drops[i]++;
     }
