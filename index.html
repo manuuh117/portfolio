@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuel | Fintech Developer</title>
+    <!-- Space Grotesk for Massive Brutalist Headings, Inter for Body -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Lenis Smooth Scroll -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.0.45/dist/lenis.css">
+    
+    <!-- Swiper.js for 3D Cards -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+    
+    <!-- Interactive Canvas Background -->
+    <canvas id="network-canvas"></canvas>
+
+    <!-- Terminal Boot Sequence -->
+    <div id="terminal-boot">
+        <div class="terminal-content">
+            <p id="term-1" class="hidden">> init secure connection...</p>
+            <p id="term-2" class="hidden">> loading fintech_modules: NUEL_DEV</p>
+            <p id="term-3" class="hidden">> verifying data streams... [OK]</p>
+            <p id="term-4" class="hidden">> compiling UI components... [OK]</p>
+            <p id="term-5" class="hidden">> access granted.</p>
+        </div>
+    </div>
+
+    <!-- Sound Toggle -->
+    <button id="sound-toggle" class="hover-sound magnetic-btn" aria-label="Toggle Sound">
+        <i class="fas fa-volume-up" id="sound-icon"></i>
+    </button>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <a href="#home" class="logo">nuel.dev</a>
+        <nav class="nav-links">
+            <a href="#home" class="hover-sound active">01. Home</a>
+            <a href="#about" class="hover-sound">02. About</a>
+            <a href="#experience" class="hover-sound">03. Experience</a>
+            <a href="#projects" class="hover-sound">04. Projects</a>
+            <a href="#uplink" class="hover-sound">05. Game</a>
+            <a href="#contact" class="hover-sound">06. Contact</a>
+        </nav>
+        <div class="nav-actions">
+            <!-- Theme Switcher -->
+            <div class="theme-switcher">
+                <button id="theme-btn" class="hover-sound magnetic-btn"><i class="fas fa-palette"></i> Theme</button>
+                <div id="theme-dropdown" class="theme-dropdown-content">
+                    <button class="theme-option hover-sound" data-theme="dark">Dark Neumorphic</button>
+                    <button class="theme-option hover-sound" data-theme="light">Light Editorial</button>
+                    <button class="theme-option hover-sound" data-theme="cyber">Cyber Hacker</button>
+                    <button class="theme-option hover-sound" data-theme="synthwave">Neon Synthwave</button>
+                    <button class="theme-option hover-sound" data-theme="brutalist">OLED Brutalist</button>
+                </div>
+            </div>
+            <button class="mobile-menu-btn hover-sound"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay">
+        <button class="mobile-close-btn hover-sound"><i class="fas fa-times"></i></button>
+        <div class="mobile-nav">
+            <a href="#about" class="mobile-link hover-sound">ABOUT</a>
+            <a href="#projects" class="mobile-link hover-sound">SYSTEMS</a>
+            <a href="#game" class="mobile-link hover-sound">TERMINAL</a>
+            <a href="#contact" class="mobile-link hover-sound">COMMUNICATION</a>
+        </div>
+    </div>
+
+    <!-- Lenis Wrapper -->
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            
+            <main>
+                <!-- Hero Section -->
+                <section id="home" class="hero-section">
+                    <div class="hero-content">
+                        <p class="hero-greeting code-text gsap-fade-up">> Hi there, I am</p>
+                        <!-- Massive Typography with Neumorphism -->
+                        <h1 class="hero-title neumorphic-text gsap-split-text">NUEL</h1>
+                        <h2 class="hero-subtitle gsap-fade-up">I engineer <span class="typing-text"></span><span class="cursor">|</span></h2>
+                        <p class="hero-desc gsap-fade-up">
+                            A Full Stack Developer specializing in Fintech, Trading Software, and Secure Financial Systems. Currently building high-performance architectures at <strong>myelitetrader.com</strong>.
+                        </p>
+                        <div class="hero-cta gsap-fade-up">
+                            <a href="#projects" class="btn btn-primary hover-sound magnetic-btn">View Projects</a>
+                            <a href="cv.pdf" download class="btn btn-secondary hover-sound magnetic-btn"><i class="fas fa-download"></i> Download CV</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Marquee Section -->
+                <div class="marquee-section">
+                    <div class="marquee-inner gsap-marquee">
+                        <span>BUILDING SECURE SYSTEMS</span>
+                        <span class="marquee-outline">ENGINEERING THE FUTURE</span>
+                        <span>FINTECH ARCHITECTURE</span>
+                        <span class="marquee-outline">WRITING RAW CODE</span>
+                    </div>
+                </div>
+
+                <!-- About Section (Gazette Editorial Layout) -->
+                <section id="about" class="about-section">
+                    <div class="section-container">
+                        <div class="gazette-layout">
+                            
+                            <div class="gazette-content gsap-fade-up">
+                                <p class="gazette-issue code-text">ISSUE: NO. 01 / FINTECH ENGINEERING</p>
+                                <h2 class="gazette-headline">THE ARCHITECT: <br>WHO IS NUEL?</h2>
+                                
+                                <div class="gazette-text">
+                                    <p><span class="drop-cap">A</span>t the bleeding edge of the financial technology sector, secure data streams and high-frequency algorithms dictate the market. Nuel, a highly driven software engineer, has positioned himself precisely at this intersection. Specializing in building fast, impenetrable, and massively scalable applications, his work bridges the critical gap between complex raw data processing and pixel-perfect user interfaces.</p>
+                                    <p>Currently engineering the future at <strong>myelitetrader.com</strong>, Nuel architects robust trading software that handles real-time market data visualization and secure execution environments. His technological stack leans heavily into performant JavaScript ecosystems, Python data pipelines, and highly secure SQL architectures.</p>
+                                </div>
+                            </div>
+
+                            <div class="gazette-image gsap-fade-left">
+                                <div class="image-wrapper frameless-mask">
+                                    <img src="images/profile.jpeg" alt="Nuel Profile" class="profile-img-fluid theme-target-img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Experience Section -->
+                <section id="experience" class="timeline-section">
+                    <div class="section-container">
+                        <h2 class="section-heading gsap-fade-up"><span class="code-text">03.</span> Experience</h2>
+                        <div class="timeline">
+                            
+                            <div class="timeline-item data-card gsap-stagger">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <p class="timeline-date code-text">Current</p>
+                                    <h3>Software Developer</h3>
+                                    <h4 class="timeline-company">myelitetrader.com</h4>
+                                    <p>Developing high-performance trading software. Focused on real-time market data visualization, secure execution environments, and scalable full-stack architectures.</p>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item data-card gsap-stagger">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <p class="timeline-date code-text">2024 - 2026</p>
+                                    <h3>B.S. Software Engineering</h3>
+                                    <h4 class="timeline-company">Zetech University</h4>
+                                    <p>Specializing in Data Structures, Algorithms, Secure Database Systems, and Advanced Web Technologies.</p>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item data-card gsap-stagger">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <p class="timeline-date code-text">2025</p>
+                                    <h3>Cyber Security Certifications</h3>
+                                    <h4 class="timeline-company">Harvard CS50 / Cisco</h4>
+                                    <p>Focused on penetration testing and securing applications against financial sector vulnerabilities.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects Section (Bento Grid) -->
+                <section id="projects" class="projects-section">
+                    <div class="section-container" style="position: relative;">
+                        <h2 class="section-heading gsap-fade-up"><span class="code-text">04.</span> Core Systems</h2>
+                        
+                        <div class="projects-layout">
+                            <!-- Massive 3D Background Text -->
+                            <div class="projects-bg-text neumorphic-text">ARTISTRY</div>
+
+                            <!-- 3D Stacked Card Deck (Swiper Engine) -->
+                            <div class="swiper project-swiper gsap-fade-up">
+                            <div class="swiper-wrapper">
+                                
+                                <!-- Box 1: MyEliteTrader -->
+                                <div class="swiper-slide project-card data-card">
+                                    <div class="card-image-wrapper">
+                                        <img src="assets/projects/myelitetrader.png" alt="MyEliteTrader" class="card-image">
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="project-header">
+                                            <i class="fas fa-chart-line accent-icon"></i>
+                                            <h3 class="project-title">myelitetrader.com</h3>
+                                        </div>
+                                    <p class="project-desc">A professional trading software platform. Built for speed and reliability, delivering real-time market insights and execution for elite traders.</p>
+                                    <div class="tech-stack code-text">
+                                        <span class="data-badge">Fintech</span>
+                                        <span class="data-badge">WebSockets</span>
+                                        <span class="data-badge">React</span>
+                                    </div>
+                                    <div class="project-links mt-auto">
+                                        <a href="https://myelitetrader.com" target="_blank" class="hover-sound"><i class="fas fa-external-link-alt"></i> Access Platform</a>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <!-- Box 2: TZX Traders -->
+                                <div class="swiper-slide project-card data-card">
+                                    <div class="card-image-wrapper">
+                                        <img src="assets/projects/tzxtraders.png" alt="TZX Traders" class="card-image">
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="project-header">
+                                            <i class="fas fa-server accent-icon"></i>
+                                            <h3 class="project-title">tzxtraders.com</h3>
+                                        </div>
+                                    <p class="project-desc">Advanced trading software architecture engineered for high-frequency data processing and secure portfolio management.</p>
+                                    <div class="tech-stack code-text">
+                                        <span class="data-badge">Architecture</span>
+                                        <span class="data-badge">Node.js</span>
+                                        <span class="data-badge">PostgreSQL</span>
+                                    </div>
+                                    <div class="project-links mt-auto">
+                                        <a href="https://tzxtraders.com" target="_blank" class="hover-sound"><i class="fas fa-external-link-alt"></i> Access Platform</a>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <!-- Box 3: Trader Sphere Hub -->
+                                <div class="swiper-slide project-card data-card">
+                                    <div class="card-image-wrapper">
+                                        <img src="assets/projects/tradersphere.png" alt="Trader Sphere Hub" class="card-image">
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="project-header">
+                                            <i class="fas fa-globe accent-icon"></i>
+                                            <h3 class="project-title">traderspherehub.com</h3>
+                                        </div>
+                                    <p class="project-desc">A global, secure trading ecosystem connecting brokers and retail traders through a centralized, massively scalable API.</p>
+                                    <div class="tech-stack code-text">
+                                        <span class="data-badge">Ecosystem</span>
+                                        <span class="data-badge">Python</span>
+                                        <span class="data-badge">API</span>
+                                    </div>
+                                    <div class="project-links mt-auto">
+                                        <a href="https://traderspherehub.com" target="_blank" class="hover-sound"><i class="fas fa-external-link-alt"></i> Access Platform</a>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <!-- Box 4: E-Commerce -->
+                                <div class="swiper-slide project-card data-card">
+                                    <div class="card-image-wrapper">
+                                        <img src="assets/projects/ecommerce.png" alt="E-Commerce API" class="card-image">
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="project-header">
+                                            <i class="fas fa-shield-alt accent-icon"></i>
+                                            <h3 class="project-title">Secure E-Commerce API</h3>
+                                        </div>
+                                    <p class="project-desc">A robust backend integrated with Daraja API for secure mobile payments and automated inventory management.</p>
+                                    <div class="tech-stack code-text">
+                                        <span class="data-badge">Node.js</span>
+                                        <span class="data-badge">Daraja API</span>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div> <!-- End swiper-wrapper -->
+                        </div> <!-- End project-swiper -->
+                        </div> <!-- End projects-layout -->
+                    </div> <!-- End section-container -->
+                </section>
+                <!-- Game Section: Terminal Uplink -->
+                <section id="uplink" class="game-section">
+                    <div class="section-container">
+                        <h2 class="section-heading gsap-fade-up"><span class="code-text">05.</span> Terminal Uplink</h2>
+                        
+                        <div class="game-container data-card gsap-fade-up">
+                            
+                            <!-- Game Display -->
+                            <div class="game-screen">
+                                <!-- Anime Background Carousel -->
+                                <div class="game-bg-carousel">
+                                    <img src="images/cyberpunk_anime_bg.png" alt="Game Background 1" class="carousel-img img-1">
+                                    <img src="images/hyper_anime_avatar.png" alt="Game Background 2" class="carousel-img img-2">
+                                    <img src="images/hyper_anime_male.png" alt="Game Background 3" class="carousel-img img-3">
+                                    <div class="carousel-overlay"></div>
+                                </div>
+                                
+                                <div class="game-content-layer">
+                                    <div class="game-header">
+                                        <span class="game-status code-text">> AWAITING_IDENTIFICATION</span>
+                                        <span class="game-score code-text">WPM: <span id="wpm-display">0</span></span>
+                                    </div>
+                                    
+                                    <!-- View 1: Registration -->
+                                    <div id="game-registration" class="game-body" style="flex-direction: column; gap: 1rem; text-align: center;">
+                                        <div class="code-text" style="color: var(--text-muted);">> ENTER IDENTIFICATION TO INITIATE PROTOCOL:</div>
+                                        <input type="text" id="player-name-input" class="cyber-input hover-sound-input" placeholder="[YOUR_NAME]" autocomplete="off" style="text-align: center; font-size: 1.5rem; letter-spacing: 2px;">
+                                        <button id="begin-uplink-btn" class="btn btn-primary magnetic-btn hover-sound" style="width: 100%;">> BEGIN UPLINK</button>
+                                    </div>
+
+                                    <!-- View 2: Active Game (Hidden initially) -->
+                                    <div id="game-active-ui" style="display: none; width: 100%;">
+                                        <div class="game-body">
+                                            <div class="word-target" id="target-word">START</div>
+                                            <div class="word-input" id="typed-word"></div>
+                                        </div>
+                                        <div class="game-instructions code-text">> Type the word to initiate the hack.</div>
+
+                                    <div id="reward-container" style="display:none; margin-top:1.5rem; width:100%; display: flex; flex-direction: column; gap: 0.5rem;">
+                                        <button id="reward-btn" class="btn btn-primary magnetic-btn hover-sound" style="width:100%; border:1px solid var(--accent-green);" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+                                            > INITIATE DIRECT PROTOCOL
+                                        </button>
+                                        <button id="restart-game-btn" class="btn btn-secondary magnetic-btn hover-sound" style="width:100%;">
+                                            > RESTART HACK
+                                        </button>
+                                        <button id="exit-game-btn" class="btn btn-secondary magnetic-btn hover-sound" style="width:100%;">
+                                            > DISCONNECT
+                                        </button>
+                                    </div>
+                                    </div> <!-- End View 2 -->
+                                </div>
+                            </div>
+
+                            <!-- Glassmorphic Keyboard -->
+                            <div class="keyboard-container">
+                                <div class="key-row">
+                                    <div class="key" data-key="q">Q</div>
+                                    <div class="key" data-key="w">W</div>
+                                    <div class="key" data-key="e">E</div>
+                                    <div class="key" data-key="r">R</div>
+                                    <div class="key" data-key="t">T</div>
+                                    <div class="key" data-key="y">Y</div>
+                                    <div class="key" data-key="u">U</div>
+                                    <div class="key" data-key="i">I</div>
+                                    <div class="key" data-key="o">O</div>
+                                    <div class="key" data-key="p">P</div>
+                                </div>
+                                <div class="key-row">
+                                    <div class="key" data-key="a">A</div>
+                                    <div class="key" data-key="s">S</div>
+                                    <div class="key" data-key="d">D</div>
+                                    <div class="key" data-key="f">F</div>
+                                    <div class="key" data-key="g">G</div>
+                                    <div class="key" data-key="h">H</div>
+                                    <div class="key" data-key="j">J</div>
+                                    <div class="key" data-key="k">K</div>
+                                    <div class="key" data-key="l">L</div>
+                                </div>
+                                <div class="key-row">
+                                    <div class="key" data-key="z">Z</div>
+                                    <div class="key" data-key="x">X</div>
+                                    <div class="key" data-key="c">C</div>
+                                    <div class="key" data-key="v">V</div>
+                                    <div class="key" data-key="b">B</div>
+                                    <div class="key" data-key="n">N</div>
+                                    <div class="key" data-key="m">M</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact" class="contact-section">
+                    <div class="section-container text-center">
+                        <h2 class="section-heading centered gsap-fade-up"><span class="code-text">06.</span> Establish Connection</h2>
+                        <p class="contact-subtitle gsap-fade-up">I'm always open to collaborating on new projects with people. Explore my service catalogue or transmit a message below.</p>
+                        
+                        <div class="contact-wrapper gsap-fade-up">
+                            <form id="contactForm" class="cyber-form" action="https://formspree.io/f/mnngnylo" method="POST">
+                                <div class="input-group">
+                                    <input type="text" name="name" required placeholder=" " class="hover-sound-input">
+                                    <label>Name</label>
+                                </div>
+                                <div class="input-group">
+                                    <input type="email" name="email" required placeholder=" " class="hover-sound-input">
+                                    <label>Email</label>
+                                </div>
+                                <div class="input-group">
+                                    <textarea name="message" required placeholder=" " class="hover-sound-input"></textarea>
+                                    <label>Message</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary hover-sound magnetic-btn">Execute Transmit <i class="fas fa-paper-plane"></i></button>
+                            </form>
+
+                            <div class="social-links" style="align-items: center; flex-wrap: wrap;">
+                                <a href="https://wa.me/c/254116922951" target="_blank" class="hover-sound btn btn-secondary magnetic-btn" style="margin-right: 1rem; border-color: var(--accent-green); color: var(--accent-green);"><i class="fas fa-store"></i> View Catalogue</a>
+                                <a href="https://github.com/manuuh117" target="_blank" class="hover-sound icon-link magnetic-btn"><i class="fab fa-github"></i></a>
+                                <a href="https://linkedin.com/in/emmanuel-mugendi-35655636a" target="_blank" class="hover-sound icon-link magnetic-btn"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://twitter.com/Uh4Manu20308" target="_blank" class="hover-sound icon-link magnetic-btn"><i class="fab fa-twitter"></i></a>
+                                <a href="https://wa.me/254116922951" target="_blank" class="hover-sound icon-link magnetic-btn"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <footer>
+                    <div class="footer-content">
+                        <p class="code-text">> System maintained by Nuel © 2026</p>
+                    </div>
+                </footer>
+            </main>
+        </div>
+    </div>
+
+    <!-- Glitch Easter Egg Overlay -->
+    <div id="glitch-overlay"></div>
+
+    <!-- Audio Effects -->
+    <audio id="hover-sound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
+    <!-- JS Engines -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
+    
+    <script src="portfolio.js"></script>
+</body>
+</html>
