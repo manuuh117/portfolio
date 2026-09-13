@@ -735,6 +735,8 @@ function downloadCV() {
     pdfContainer.style.lineHeight = '1.6';
     pdfContainer.style.fontSize = '14px';
     pdfContainer.style.background = '#FFFFFF';
+    pdfContainer.style.position = 'absolute';
+    pdfContainer.style.left = '-9999px'; // Hide it from view
     
     // Format the raw terminal text into structured HTML for the PDF
     let htmlContent = cvData
@@ -745,6 +747,7 @@ function downloadCV() {
         .replace(/\n/g, '<br>');
         
     pdfContainer.innerHTML = htmlContent;
+    document.body.appendChild(pdfContainer); // Must be in DOM for html2pdf to compute styles
     
     const opt = {
       margin:       0.5,
@@ -754,5 +757,10 @@ function downloadCV() {
       jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
 
-    html2pdf().set(opt).from(pdfContainer).save();
+    html2pdf().set(opt).from(pdfContainer).save().then(() => {
+        document.body.removeChild(pdfContainer); // Cleanup after download
+    }).catch(err => {
+        console.error("PDF Generation Error:", err);
+        document.body.removeChild(pdfContainer);
+    });
 }
