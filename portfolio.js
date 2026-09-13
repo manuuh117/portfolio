@@ -186,18 +186,14 @@ function initGSAPAnimations() {
         );
     });
 
-    // 4.5 Horizontal Marquee Scrub
+    // 4.5 Horizontal Marquee Loop
     const marquee = document.querySelector('.gsap-marquee');
     if (marquee) {
         gsap.to(marquee, {
-            xPercent: -50, // Move left
+            xPercent: -50,
             ease: "none",
-            scrollTrigger: {
-                trigger: ".marquee-section",
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1 // Link to scroll position with slight momentum
-            }
+            duration: 25,
+            repeat: -1
         });
     }
 
@@ -711,8 +707,23 @@ if (btnGenerateCv) {
             
             if (index >= cvData.length) {
                 clearInterval(typeInterval);
-                cvOutput.textContent += '\\n\\n> DOWNLOAD_INITIATED...\\n> [OK]';
-                downloadCV();
+                cvOutput.textContent += '\\n\\n> DATA_EXTRACTION_COMPLETE...\\n> ';
+                
+                // Create a manual download button to bypass mobile async download blocking
+                const finalBtn = document.createElement('button');
+                finalBtn.className = 'btn btn-primary magnetic-btn hover-sound';
+                finalBtn.style.marginTop = '1rem';
+                finalBtn.textContent = '> DOWNLOAD_PDF.exe';
+                finalBtn.onclick = () => {
+                    finalBtn.textContent = '> GENERATING...';
+                    downloadCV();
+                    setTimeout(() => {
+                        finalBtn.textContent = '> DOWNLOADED_SUCCESSFULLY';
+                    }, 2000);
+                };
+                
+                cvOutput.appendChild(document.createElement('br'));
+                cvOutput.appendChild(finalBtn);
             }
         }, typeSpeed);
     });
