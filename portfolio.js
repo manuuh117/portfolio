@@ -788,7 +788,7 @@ function downloadCV() {
     iframe.style.top = '0';
     iframe.style.left = '0';
     iframe.style.width = '800px';
-    iframe.style.height = '1200px';
+    iframe.style.height = '100vh'; // Flexible height
     iframe.style.zIndex = '-9999';
     iframe.style.pointerEvents = 'none';
     iframe.style.opacity = '0';
@@ -819,7 +819,9 @@ function downloadCV() {
             </style>
         </head>
         <body>
-            ${htmlContent}
+            <div id="cv-content">
+                ${htmlContent}
+            </div>
         </body>
         </html>
     `);
@@ -829,7 +831,7 @@ function downloadCV() {
       margin:       0.5,
       filename:     'Nuel_Software_Engineer_CV.pdf',
       image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2, windowWidth: 800, windowHeight: 1200 },
+      html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
       jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
 
